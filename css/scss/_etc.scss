@@ -246,7 +246,7 @@ body.home .gallery,
   max-width: 300px;
   background-color: #fff;
   border: 1px solid $line;
-  border-radius: 3px;
+  border-radius: 50px;
   position: relative;
   > label {
     margin-bottom: 0;
@@ -261,33 +261,67 @@ body.home .gallery,
       line-height: 1;
       display: block;
       position: absolute;
-      right: 8px;
+      left: 8px;
       top: 8px;
       z-index: 2;
-      color: $gray;
+      color: $primary;
       font-size: 20px;
     }
   }
   .search-field {
+    margin-left: 30px;
     width: calc(100% - 30px);
     border: none;
     background: none;
-    height: 40px;
-    padding: 0 6px 0 14px;
+    height: 35px;
+    padding: 0 6px;
     font-weight: normal;
     font-size: 16px;
   }
   .search-submit {
-    height: 40px;
+    height: 35px;
     background: none;
     border: none;
     width: 40px;
     border-radius: 0;
     color: transparent;
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     box-shadow: none !important;
+  }
+}
+
+.s-image {
+  margin: 0;
+  img {
+    width: 100%;
+  }
+}
+
+.desciption {
+  margin-bottom: 0;
+  line-height: 1.2em;
+}
+
+.has-medium-font-size {
+  line-height: 1.2em;
+}
+
+.course-column {
+  border-radius: $box-border-radius;
+  overflow: hidden;
+}
+
+.kt-gutter-widest:not(.kt-mobile-layout-row)>.wp-block-kadence-column {
+  @media (max-width: 767px) {
+    margin-right: 10px;
+  }
+}
+
+.kt-mobile-layout-two-grid.kt-gutter-widest>.wp-block-kadence-column {
+  @media (max-width: 767px) {
+    flex: 0 0 calc( 50% - 10px );
   }
 }

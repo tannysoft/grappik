@@ -35,6 +35,11 @@ body.headbar-d {
       color: $header-d-hover-text;
     }
   }
+  .site-logo {
+    a {
+      padding: 20px 0;
+    }
+  }
 }
 .site-header-space {
   height: $header-d-height;
@@ -84,6 +89,8 @@ body.headbar-d {
     transition: 0.3s ease-in-out;
     a {
       padding: 10px 15px;
+      font-size: 1.3em;
+      font-weight: 700;
     }
     &:hover {
       > .sub-menu {
@@ -208,19 +215,40 @@ body.headbar-d {
 }
 
 /* == BODY == */
+.main-slider,
+.main-single {
+  position: relative;
+  background-color: #fafafa;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: $primary;
+    z-index: 1;
+  }
+}
 .main-header {
   margin-bottom: $space-d / 2;
   padding-top: $space-d;
   &.-banner {
     padding-bottom: $space-d - 4;
     min-height: $title-d-height;
-    margin-bottom: $space-d;
+    margin-bottom: 25px;
     .main-title {
       width: 750px;
     }
   }
   .title {
     font-size: $title-d-size;
+  }
+  .archive-description {
+    p {
+      font-size: 1.2em;
+      line-height: 1.8em;
+    }
   }
 }
 
@@ -230,7 +258,17 @@ body.headbar-d {
     border-radius: $box-border-radius;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 73fr 38fr;
+    grid-template-columns: 5fr 7fr;
+    align-items: center;
+    margin: 0;
+    > div {
+      &:nth-child(1) {
+        order: 1;
+      }
+      &:nth-child(2) {
+        order: 2;
+      }
+    }
     .pic {
       margin-bottom: 0;
       > a {
@@ -239,10 +277,34 @@ body.headbar-d {
       }
       img {
         max-height: 600px;
+        border-radius: $box-border-radius;
       }
     }
     .info {
-      padding: 30px;
+      padding: 0;
+      background-color: transparent;
+    }
+    .cat {
+      a {
+        color: $text;
+      }
+    }
+    .entry-header {
+      display: block;
+      p {
+        margin-bottom: 1em;
+      }
+    }
+    .entry-title {
+      padding-right: 25px;
+      font-size: 3em;
+      a {
+        color: $text;
+      }
+    }
+    .s-button {
+      margin-top: 15px;
+      display: block;
     }
   }
 }
@@ -294,14 +356,32 @@ body.page-template-page-form .site-content {
   }
 }
 /* SINGLE - AUTHOR PROFILE */
+.main-single {
+  margin-bottom: 0;
+  padding: 0;
+  .featured-image {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
 .entry-author {
-  margin-top: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   text-align: left;
   display: flex;
   align-items: center;
   .pic {
     margin: 0;
     padding-right: $space-m;
+  }
+}
+.single-area {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  .entry-title {
+    font-size: 3.2em;
   }
 }
 /* COMMENTS */

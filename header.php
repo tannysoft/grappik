@@ -15,7 +15,7 @@
 <?php $bodyClass = ''; if (is_active_sidebar( 'headbar_d' )) { $bodyClass = 'headbar-d'; } if (is_active_sidebar( 'headbar_m' )) { $bodyClass .= ' headbar-m'; } ?>
 
 <body <?php body_class($bodyClass); ?>>
-    <?php 
+    <?php
     if ( function_exists( 'wp_body_open' ) ) {
         wp_body_open();
     } else {
@@ -38,12 +38,13 @@
                     <div class="site-logo"><?php seed_logo(); ?></div>
                     <?php seed_title(); ?>
                 </div>
-
+<?php /*
                 <div class="action-left">
                     <?php seed_header_action($GLOBALS['s_left_area'], $GLOBALS['s_left_area_phone'], $GLOBALS['s_left_area_custom'] ); ?>
                 </div>
-
+*/ ?>
                 <div class="action-right">
+                    <?php seed_header_action($GLOBALS['s_left_area'], $GLOBALS['s_left_area_phone'], $GLOBALS['s_left_area_custom'] ); ?>
                     <?php seed_header_action($GLOBALS['s_right_area'], $GLOBALS['s_right_area_phone'], $GLOBALS['s_right_area_custom'] ); ?>
                 </div>
 

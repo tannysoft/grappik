@@ -52,12 +52,12 @@ function get_seed_posted_on() {
 		$time_string = '<time class="entry-date published" datetime="' . $date_w3c .'">' . $date_txt .'</time><time class="updated" datetime="' . $modified_date_w3c . '">' . $modified_date_txt . '</time>';
 	}
 
-	$posted_on = '<span class="posted-on"><i class="si-clock"></i><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a></span>';
+	$posted_on = '<span class="posted-on"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a></span>';
 
 	$byline = '';
 
 	if($GLOBALS['s_blog_profile'] == 'enable') {
-		$byline = '<span class="byline"><span class="author vcard"><i class="si-user"></i><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span></span>';
+		$byline = '<span class="byline"><span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span></span>';
 	}
 
 	return $posted_on . $byline; 
@@ -228,13 +228,13 @@ if($title_style == 'banner') {
     }
     $banner_bg = '<div class="bg';
 		if($img_banner) {
-			$style = 'background-image: url(' . $img_banner . ');';
+			/* $style = 'background-image: url(' . $img_banner . ');';
 			if ($img_banner_blur != '') {
 				$style .= ' filter: blur(' . $img_banner_blur . 'px);';
 			}
 			if ($img_banner_opacity) {
 				$style .= ' opacity: ' . $img_banner_opacity . ';';
-			}
+			}*/
 			$banner_bg .= '" style="' . $style .'"';
 		} else {
 			$banner_bg .= ' -blank"'; 
@@ -265,7 +265,10 @@ if (function_exists('is_shop') ) {
         $title=get_the_title($post_id); 
     } 
 }
-    $output = '<div class="main-header -' . $banner_class . '">' . $banner_bg . '<div class="s-container"><div class="main-title _heading"><div class="title"><a href="' . $permalink . '">' . $title .'</a> </div>' . $breadcrumb . '</div></div></div>' ; 
+if(is_archive()) {
+	$archiveDescription = '<div class="archive-description">' . get_the_archive_description() . '</div>';
+}
+    $output = '<div class="main-header -' . $banner_class . '">' . $banner_bg . '<div class="s-container"><div class="main-title _heading"><div class="title"><a href="' . $permalink . '">' . $title .'</a></div>' . $archiveDescription . $breadcrumb . '</div></div></div>' ; 
     echo $output; 
 } 
 

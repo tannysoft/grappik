@@ -25,8 +25,8 @@ if (!isset($GLOBALS['s_shop_pagebuilder']))     {$GLOBALS['s_shop_pagebuilder'] 
 if (!isset($GLOBALS['s_logo_path']))            {$GLOBALS['s_logo_path']            = 'none';}          // theme folder relative path, such as img/logo.svg .
 if (!isset($GLOBALS['s_logo_width']))           {$GLOBALS['s_logo_width']           = '200';}           // any number, use in Custom Logo
 if (!isset($GLOBALS['s_logo_height']))          {$GLOBALS['s_logo_height']          = '100';}           // any number, use in Custom Logo
-if (!isset($GLOBALS['s_thumb_width']))          {$GLOBALS['s_thumb_width']          = '350';}           // any number
-if (!isset($GLOBALS['s_thumb_height']))         {$GLOBALS['s_thumb_height']         = '184';}           // any number
+if (!isset($GLOBALS['s_thumb_width']))          {$GLOBALS['s_thumb_width']          = '370';}           // any number
+if (!isset($GLOBALS['s_thumb_height']))         {$GLOBALS['s_thumb_height']         = '240';}           // any number
 if (!isset($GLOBALS['s_thumb_crop']))           {$GLOBALS['s_thumb_crop']           = true;}            // true, false
 if (!isset($GLOBALS['s_title_style']))          {$GLOBALS['s_title_style']          = 'banner';}        // minimal, banner
 
@@ -40,7 +40,7 @@ if (!isset($GLOBALS['s_jquery']))               {$GLOBALS['s_jquery']           
 if (!isset($GLOBALS['s_fontawesome']))          {$GLOBALS['s_fontawesome']          = 'disable';}       // disable, enable
 if (!isset($GLOBALS['s_flickity']))             {$GLOBALS['s_flickity']             = 'enable';}        // disable, enable
 if (!isset($GLOBALS['s_wp_comments']))          {$GLOBALS['s_wp_comments']          = 'disable';}       // disable, enable
-if (!isset($GLOBALS['s_admin_bar']))            {$GLOBALS['s_admin_bar']            = 'hide';}          // hide, show
+if (!isset($GLOBALS['s_admin_bar']))            {$GLOBALS['s_admin_bar']            = 'show';}          // hide, show
 
 /* CHECK WOOCOMMERCE */
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -72,6 +72,8 @@ if (!function_exists('seed_setup')) {
         ));
         add_theme_support('post-thumbnails');
         set_post_thumbnail_size($GLOBALS['s_thumb_width'], $GLOBALS['s_thumb_height'], $GLOBALS['s_thumb_crop']);
+        add_image_size( 'hero-thumb', 675, 450, true );
+        add_image_size( 'card-thumb', 470, 305, true );
         register_nav_menus(array(
             'primary' => esc_html__('Main Menu', 'seed'),
             'mobile'  => esc_html__('Mobile Menu', 'seed'),
@@ -191,7 +193,7 @@ function seed_scripts() {
         wp_enqueue_script('comment-reply');
     }
 }
-add_action('wp_enqueue_scripts', 'seed_scripts');
+add_action('wp_enqueue_scripts', 'seed_scripts', 99);
 
 
 

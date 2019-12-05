@@ -632,20 +632,10 @@ Kirki::add_field( 'plant', [
 			'property' => 'color',
 		],
 		[
-			'choice'   => 'link',
-			'element'  => '.content-item .cat a',
-			'property' => 'background',
-        ],
-		[
 			'choice'   => 'hover',
 			'element'  => 'a:hover',
 			'property' => 'color',
 		],
-		[
-			'choice'   => 'hover',
-			'element'  => '.content-item .cat a:hover',
-			'property' => 'background',
-        ],
         [
 			'choice'   => 'active',
 			'element'  => 'a:active',

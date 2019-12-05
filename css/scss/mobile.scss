@@ -45,7 +45,13 @@
     top: 46px;
   }
   a {
+    display: inline-block;
     color: $header-m-text;
+  }
+  .site-logo {
+    a {
+      padding: 17px 0px;
+    }
   }
   #page.show-nav > & {
     transform: none;
@@ -57,12 +63,7 @@
 }
 
 .site-branding {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
+  position: relative;
   img {
     max-height: $header-m-height;
     width: auto;
@@ -82,9 +83,11 @@
 
 .site-toggle {
   // Ref: https://march08.github.io/animated-burgers/
+  vertical-align: top;
+  display: inline-block;
   position: relative;
-  margin: 0 $space-m;
-  height: 2.4em;
+  margin: 12px 15px 0 0;
+  padding: 10px 0 15px;
   width: 2.4em;
   font-size: 10px;
   cursor: pointer;
@@ -123,12 +126,12 @@
     }
     &:before {
       left: 0;
-      right: 1em;
+      right:0;
       top: -0.8em;
     }
 
     &:after {
-      left: 1em;
+      left: 0;
       right: 0;
       top: 0.8em;
     }
@@ -170,13 +173,16 @@
   transform: translateY(-50%);
 }
 .action-right {
+  margin-top: 1px;
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
 }
 .site-search {
-  padding: 10px 16px;
+  vertical-align: top;
+  display: inline-block;
+  padding: 11px 13px;
   font-size: 20px;
   cursor: pointer;
 }
@@ -281,6 +287,8 @@
       display: block;
       color: $nav-m-text;
       padding: 10px 0 9px;
+      font-weight: 700;
+      font-size: 1.2em;
       &:hover {
         opacity: 0.8;
       }
@@ -441,11 +449,26 @@
   }
   .title {
     font-size: $title-m-size;
+    font-weight: 700;
+    line-height: 1.1em;
     margin: 0;
+    a {
+      display: block;
+    }
     small {
       font-size: 0.7em;
       display: block;
       padding-top: 5px;
+    }
+  }
+  .archive-description {
+    p {
+      max-width: 500px;
+      margin: 0 auto;
+      color: $text;
+      font-family: $body-font;
+      font-size: 1.1em;
+      line-height: 1.6em;
     }
   }
   .bc {
@@ -485,14 +508,11 @@
   }
   .cat {
     a {
-      background: $link-text;
-      color: #fff;
-      font-size: 0.875em;
-      padding: 3px 6px;
-      border-radius: $box-border-radius;
-      &:hover {
-        background: $link-hover-text;
-      }
+      background-color: transparent;
+      color: $gray;
+      font-size: 1em;
+      padding: 0;
+      text-transform: uppercase;
     }
   }
   .tags-links,
@@ -516,23 +536,21 @@
     }
   }
   &.-card {
-    box-shadow: $box-shadow;
-    border-radius: $box-border-radius;
-    padding: $box-padding;
-    background: $box-bg;
-    padding-bottom: 65px;
+    padding: 0;
     .pic {
-      margin: -#{$box-padding} -#{$box-padding} 15px;
-      border-radius: $box-border-radius $box-border-radius 0 0;
+      margin: 0;
+      border-radius: $box-border-radius;
       img {
-        border-radius: $box-border-radius $box-border-radius 0 0;
+        border-radius: $box-border-radius;
       }
     }
-    .author {
-      position: absolute;
-      bottom: 15px;
-      left: 15px;
-      right: 15px;
+    .entry-title {
+      margin-top: 15px;
+      font-size: 1.7em;
+      line-height: 1.2em;
+      a {
+        color: $text;
+      }
     }
   }
   &.-list {
@@ -617,15 +635,18 @@
     }
   }
   &.-hero {
-    background-color: #fff;
-    box-shadow: $box-shadow;
     margin: 0 -#{$box-padding + 1} 0;
-    @media (min-width: 768px) {
-      margin: 0;
-      border-radius: $box-border-radius 0 0 $box-border-radius;
+    > div {
+      &:nth-child(1) {
+        order: 2;
+      }
+      &:nth-child(2) {
+        order: 1;
+      }
     }
 
     .pic {
+      margin-bottom: 0;
       img {
         width: 100%;
         max-height: 100vh;
@@ -633,7 +654,34 @@
       }
     }
     .info {
-      padding: 0 15px 15px;
+      padding: 15px;
+      background-color: $primary;
+    }
+    .cat {
+      a {
+        color: #fff;
+      }
+    }
+    .entry-header {
+      display: grid;
+      h2 {
+        order: 1;
+      }
+      p {
+        order: 2;
+        margin-bottom: 0;
+      }
+    }
+    .entry-title {
+      font-size: 1.7em;
+      font-weight: 700;
+      line-height: 1.1em;
+      a {
+        color: #fff;
+      }
+    }
+    .s-button {
+      display: none;
     }
   }
   a.author {
@@ -724,7 +772,7 @@
 }
 .entry-meta {
   font-size: 0.82em;
-  margin: 8px 0 15px;
+  margin: 8px 0 25px;
   opacity: 0.8;
   > span {
     margin: 0 5px;
@@ -828,35 +876,87 @@ body.page-template-page-form .site-content {
 }
 
 /* SINGLE */
+.main-single {
+  margin-bottom: 0;
+  padding: 0;
+  .featured-image {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-top: 0;
+    padding-bottom: 0;
+    a {
+      display: block;
+      margin: 0 auto;
+      max-width: 700px;
+    }
+    img {
+      width: 100%;
+      border-radius: $box-border-radius;
+    }
+  }
+}
 .single-area {
+  margin-top: 15px;
+  margin-bottom: 15px;
   > .content-area {
-    max-width: 750px;
+    max-width: 700px;
     margin: 0 auto;
     padding-left: 0;
     padding-right: 0;
+  }
+  .entry-title {
+    font-weight: 700;
+    line-height: 1em;
+  }
+  .entry-meta {
+    .posted-on {
+      a {
+        color: #777;
+      }
+    }
+    .byline {
+      display: none;
+    }
+  }
+  .entry-content {
+    font-size: 1.2em;
+    line-height: 1.8em;
+    img {
+      border-radius: $box-border-radius;
+    }
   }
 }
 
 /* AUTHOR PROFILE */
 .entry-author {
   margin: $space-d auto;
+  padding-top: 30px;
   text-align: center;
+  border-top: 1px solid #d0d0d0;
   .pic {
     margin: 8px;
     img {
       border-radius: 100%;
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
+      width: 100px;
+      height: auto;
     }
   }
   .desc {
-    font-size: 0.875em;
+    font-family: $heading-font;
+    font-size: 1.4em;
+    line-height: 1.1em;
     margin-top: 5px;
+    color: #666;
   }
   .name {
-    font-size: 1.125em;
+    font-family: $heading-font;
+    font-size: 2em;
     margin-bottom: 0;
+    line-height: 1.1em;
+    text-transform: uppercase;
+    a {
+      display: block;
+    }
   }
   &.-head {
     .entry-title {
@@ -917,6 +1017,16 @@ body.page-template-page-form .site-content {
   margin-bottom: 10px;
   font-size: 1.375em;
 }
+
+/* RELATED */
+.related {
+  background-color: #fafafa;
+  .s-title {
+    font-size: 2.2em;
+    font-weight: 700;
+  }
+}
+
 /* ERROR 404 */
 .error-404 {
   text-align: center;
@@ -962,5 +1072,23 @@ body.page-template-page-form .site-content {
   }
   p:last-of-type {
     margin-bottom: 0;
+  }
+}
+
+.site-footpage {
+  .wp-block-image {
+    margin-top: 0;
+  }
+  ._heading {
+    margin-bottom: 0;
+    font-size: 1.3em;
+    line-height: 1.25em;
+  }
+  .wp-block-kadence-icon {
+    margin-left: 20px;
+    display: inline-block;
+    &:first-child {
+      margin-left: 0;
+    }
   }
 }

@@ -1,19 +1,19 @@
 // out: false
 
 //== GENERAL
-$primary: #0f6b4e;
-$primary-hover: #60c760;
-$text: #242d2e;
+$primary: #ee4b47;
+$primary-hover: #ee4b47;
+$text: #333;
 $bg: #fff;
 $light: #f8f9fa;
-$line: #dcdfe5;
-$gray: #878f9d;
+$line: #eaeaea;
+$gray: #777;
 $red: #c00;
 
 //== BUTTON
-$button-bg: $primary;
-$button-text: $bg;
-$button-hover-bg: $primary-hover;
+$button-bg: $bg;
+$button-text: $primary;
+$button-hover-bg: $primary;
 $button-hover-text: $bg;
 $button-border-radius: 100px;
 
@@ -21,7 +21,7 @@ $button-border-radius: 100px;
 $box-bg: $bg;
 $box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
 $box-border: none;
-$box-border-radius: 3px;
+$box-border-radius: 6px;
 $box-padding: 15px;
 /*
 $box-shadow: none;
@@ -31,7 +31,7 @@ $box-border: 1px solid ;
 */
 
 //== FONTS
-$heading-font: "IBM Plex Thai", sans-serif; // Maledpan;
+$heading-font: "DB Heavent", sans-serif;
 $heading-font-weight: 500;
 $heading-line-height: 1.4;
 $body-font: "Sarabun", sans-serif;
@@ -39,8 +39,8 @@ $body-font-size: 16px;
 $body-line-height: 1.625;
 
 //== SPACE (Gutter)
-$space-m: 16px;
-$space-d: 30px;
+$space-m: 15px;
+$space-d: 15px;
 
 //== HEADER
 $header-m-height: 50px;
@@ -52,7 +52,7 @@ $header-d-text: $text;
 $header-d-line: rgba(0, 0, 0, 0.06);
 $header-d-hover-text: $primary;
 
-$nav-m-bg: $text;
+$nav-m-bg: $primary;
 $nav-m-text: #fff;
 $nav-m-line: rgba(255, 255, 255, 0.2);
 $nav-d-bg: #fff;
@@ -66,15 +66,15 @@ $body-bg: #fff;
 $body-text: $text;
 
 //== TITLE (For Banner style, except Size.)
-$title-bg: #000;
+$title-bg: #fafafa;
 $title-bg-blank: linear-gradient(124deg, $primary 0%, $primary-hover 100%);
 $title-bg-opacity: 0.7;
 $title-blur: 20px; // none, 10px, 20px, etc.
-$title-text: #fff;
+$title-text: $primary;
 $title-m-height: 120px;
 $title-d-height: 220px;
-$title-m-size: 24px;
-$title-d-size: 32px;
+$title-m-size: 36px;
+$title-d-size: 50px;
 
 //== SLIDER
 $slider-bg: #000;
