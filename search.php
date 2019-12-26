@@ -15,20 +15,19 @@ get_header(); ?>
     <div id="primary" class="content-area">
         <main id="main" class="site-main">
 
-            <p><?php get_search_form( ); ?></p>
-
             <?php if ( have_posts() ) : ?>
 
-            <?php if ( is_home() && ! is_front_page() ) : ?>
-            <header>
-                <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-            </header>
-            <?php endif; ?>
+			<div class="s-grid -d2">
+				<header class="page-header">
+					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyfifteen' ), get_search_query() ); ?></h1>
+				</header><!-- .page-header -->
+				<div class="search-page-form"><?php get_search_form( ); ?></div>
+			</div>
 
             <?php 
-				echo '<div class="s-grid">';
+				echo '<div class="s-grid -d3">';
 				while ( have_posts() ) : the_post();
-				get_template_part( 'template-parts/content','search');
+				get_template_part( 'template-parts/content','card');
 				endwhile; 
 				echo '</div>';
 			?>

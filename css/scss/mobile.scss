@@ -1,10 +1,10 @@
 // out: ../mobile.css, compress: true, sourceMap: false, autoprefixer: last 5 versions, groupmedia: true
 
-@import "variables";
-@import "begin";
-@import "seed";
-@import "fonts";
-@import "etc";
+@import "_variables.scss";
+@import "_begin.scss";
+@import "_seed.scss";
+@import "_fonts.scss";
+@import "_etc.scss";
 
 /* == GENERAL == */
 .site {
@@ -1032,6 +1032,20 @@ body.page-template-page-form .site-content {
   text-align: center;
   .search-form {
     margin: 0 auto 30px;
+  }
+}
+
+/* SEARCH */
+.search-results {
+  .page-header {
+    display: none;
+  }
+}
+.search-page-form {
+  text-align: center;
+  .search-form {
+    display: inline-block;
+    max-width: 100%;
   }
 }
 

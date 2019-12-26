@@ -251,12 +251,16 @@ if ( 'post' === get_post_type($post_id) ) {
 } 
 if(is_front_page()) { 
     $title=get_bloginfo( 'name' ) . '<small>' . get_bloginfo( 'description' ) . '</small>' ; 
-    $breadcrumb='' ;
+    $breadcrumb='';
 } elseif (is_archive()) { 
     $title=get_the_archive_title($post_id); 
-    $breadcrumb='' ;
+    $breadcrumb='';
 } elseif (is_404()) { 
-    $title=__('Page not found', 'seed' ); 
+	$title=__('Page not found', 'seed' ); 
+} elseif (is_search()) { 
+	$title='Search Results for: ' . get_search_query();
+	$permalink=home_url( $wp->request ) . '?s=' . get_search_query();
+    $breadcrumb='';
 } else { 
     $title = get_the_title($post_id); 
 } 

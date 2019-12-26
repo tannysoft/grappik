@@ -337,3 +337,18 @@ function plant_register_required_plugins() {
 	);
 	tgmpa( $plugins, $config );
 }
+
+function my_deregister_styles() {
+    if(!is_admin()) {
+        wp_dequeue_style('wp-block-library');
+        if(is_single()==false) {
+            wp_deregister_style( 'seed-social' );
+            wp_dequeue_script( 'seed-social' );
+        }
+        if(is_user_logged_in()==false) {
+            wp_deregister_style( 'dashicons' );   
+        }
+    }
+}
+
+add_action( 'wp_print_styles', 'my_deregister_styles', 100 );
