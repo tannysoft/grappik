@@ -2,6 +2,14 @@
 /**
  * Loop Name: Content Hero
  */
+$banner = get_field('banner', get_the_ID());
+if($banner) {
+    $bannerHtml = wp_get_attachment_image( $banner, "hero-thumb", "", array( "class" => "img-responsive" ) );
+} elseif (has_post_thumbnail()) {
+    $bannerHtml = get_the_post_thumbnail( get_the_ID(), "hero-thumb" );
+} else {
+    $bannerHtml = '<img src="' . esc_url( get_template_directory_uri()) .'/img/thumb.jpg" alt="'. get_the_title() .'" />';
+}
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('content-item -hero'); ?>>
     <div class="info">
@@ -26,7 +34,7 @@
     </div>
     <div class="pic">
         <a href="<?php the_permalink(); ?>" title="Permalink to <?php the_title_attribute(); ?>" rel="bookmark">
-            <?php if(has_post_thumbnail()) { the_post_thumbnail('hero-thumb');} else { echo '<img src="' . esc_url( get_template_directory_uri()) .'/img/thumb.jpg" alt="'. get_the_title() .'" />'; }?>
+            <?php echo $bannerHtml; ?>
         </a>
     </div>
 </article>

@@ -309,7 +309,7 @@ body.headbar-d {
   }
 }
 .content-pagination {
-  margin-bottom: $space-d;
+  margin-bottom: $space-d * 3;
 }
 .main-body {
   &.-rightbar {
@@ -375,6 +375,13 @@ body.page-template-page-form .site-content {
   .pic {
     margin: 0;
     padding-right: $space-m;
+  }
+}
+.main-single {
+  .featured-image {
+    img {
+      border-radius: $box-border-radius;
+    }
   }
 }
 .single-area {
