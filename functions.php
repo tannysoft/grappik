@@ -161,6 +161,15 @@ add_action('widgets_init', 'seed_widgets_init');
 /**
  * Enqueue scripts and styles.
  */
+function seed_jquery() {
+    if (($GLOBALS['s_jquery'] == 'enable') || $GLOBALS['s_is_woo'] || get_post_type()=='page') {
+        if(!is_front_page()) {
+            wp_enqueue_script('s-jquery', get_theme_file_uri('/js/jquery-3.4.1.min.js'), array(), filemtime( get_theme_file_path('/js/jquery-3.4.1.min.js')), true);
+        }
+    }
+}
+add_action('wp_enqueue_scripts', 'seed_jquery', 1);
+
 function seed_scripts() {
 
     wp_enqueue_style('s-mobile', get_theme_file_uri('/css/mobile.css'), array(), filemtime(get_theme_file_path('/css/mobile.css')));
@@ -186,7 +195,7 @@ function seed_scripts() {
     wp_enqueue_script('s-vanilla', get_theme_file_uri('/js/main-vanilla.js'), array(), filemtime(get_theme_file_path('/js/main-vanilla.js')), true);
 
     if (($GLOBALS['s_jquery'] == 'enable') || $GLOBALS['s_is_woo']) {
-        wp_enqueue_script('s-jquery', get_theme_file_uri('/js/main-jquery.js'), array('jquery'), filemtime( get_theme_file_path('/js/main-jquery.js')), true);
+        wp_enqueue_script('s-jquery-config', get_theme_file_uri('/js/main-jquery.js'), array(), filemtime( get_theme_file_path('/js/main-jquery.js')), true);
     }
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -346,7 +355,29 @@ function my_deregister_styles() {
             wp_dequeue_script( 'seed-social' );
         }
         if(is_user_logged_in()==false) {
-            wp_deregister_style( 'dashicons' );   
+            wp_deregister_style( 'dashicons' );  
+        }
+        if(get_post_type()!=='page') {
+            wp_deregister_style( 'kadence-blocks-btn' );
+            wp_deregister_style( 'kadence-blocks-gallery' );
+            wp_deregister_style( 'kadence-blocks-pro-slick' );
+            wp_deregister_style( 'kadence-blocks-magnific-css' );
+            wp_deregister_style( 'kadence-blocks-testimonials' );
+            wp_deregister_style( 'kadence-blocks-accordion' );
+            wp_deregister_style( 'kadence-blocks-spacer' );
+            wp_deregister_style( 'kadence-blocks-modal' );
+            wp_deregister_style( 'kadence-blocks-form' );
+
+            wp_dequeue_script( 'kadence-modal' );
+            wp_dequeue_script( 'kadence-slick' );
+            wp_dequeue_script( 'kadence-blocks-slick-init' );
+            wp_dequeue_script( 'magnific-popup' );
+            wp_dequeue_script( 'kadence-blocks-gallery-magnific-init' );
+            wp_dequeue_script( 'kadence-blocks-accordion-js' );
+            wp_dequeue_script( 'masonry' );
+            wp_dequeue_script( 'kadence-blocks-masonry-init' );
+            wp_dequeue_script( 'kadence-modal' );
+            wp_dequeue_script( 'kadence-blocks-form' );
         }
     }
 }

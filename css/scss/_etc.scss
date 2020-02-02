@@ -16,6 +16,10 @@ img.centered,
   display: block;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+}
+.has-text-align-center {
+  text-align: center;
 }
 img.alignright {
   display: inline;
@@ -273,7 +277,7 @@ body.home .gallery,
     width: calc(100% - 30px);
     border: none;
     background: none;
-    height: 35px;
+    height: 39px;
     padding: 0 6px;
     font-weight: normal;
     font-size: 16px;

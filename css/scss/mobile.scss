@@ -647,6 +647,11 @@
 
     .pic {
       margin-bottom: 0;
+      picture {
+        width: 100%;
+        max-height: 100vh;
+        object-fit: cover;
+      }
       img {
         width: 100%;
         max-height: 100vh;
@@ -1047,6 +1052,10 @@ body.page-template-page-form .site-content {
     display: inline-block;
     max-width: 100%;
   }
+}
+
+#google_esf {
+  display: none!important;
 }
 
 /* == FOOTER == */
