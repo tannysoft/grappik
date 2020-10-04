@@ -6,7 +6,7 @@ add_action('admin_enqueue_scripts', 'seed_add_gutenberg_assets');
 function seed_add_gutenberg_assets() {
     wp_enqueue_style('s-gutenberg', get_theme_file_uri('/css/wp-gutenberg.css'), false);
     wp_enqueue_script('s-fkt', get_theme_file_uri('/js/flickity.js'), array(), '2.2.1', true);
-    wp_enqueue_script('s-blocks', get_theme_file_uri('/js/wp-blocks.js'), array(), '1.0.0', true);
+    wp_enqueue_script('s-blocks', get_theme_file_uri('/js/wp-blocks.js'), array(), '1.0.1', true);
 }
 
 
